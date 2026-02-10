@@ -1,175 +1,204 @@
 ⌚ FPGA Digital Watch (Verilog)
 
-A modular digital watch system implemented in Verilog HDL.
-The project supports real-time clock functionality along with an interactive edit mode controlled through push buttons.
+    A modular digital watch system implemented in Verilog HDL.
+    The project supports real-time clock functionality along with an interactive edit mode controlled through push buttons.
+
 
 📌 Features
 
-⏱ Real-time Seconds, Minutes, and Hours counter
+    ⏱ Real-time Seconds, Minutes, and Hours counter
 
-🛠 Edit mode to manually adjust time
+    🛠 Edit mode to manually adjust time
 
-🔘 Button-controlled input with debouncing
+    🔘 Button-controlled input with debouncing
 
-🔄 Mode-based display and editing selection
+    🔄 Mode-based display and editing selection
 
-🧩 Fully modular RTL design
+    🧩 Fully modular RTL design
 
-⚡ Designed for 100 MHz FPGA clock
+    ⚡ Designed for 100 MHz FPGA clock
+
 
 🧱 Project Architecture
 
-The design is divided into multiple independent modules for clarity and scalability.
+    The design is divided into multiple independent modules for clarity and scalability.
 
-watch (Top Module)
-│
-├── sec              → Seconds counter
-├── minute           → Minutes counter
-├── hr               → Hours counter
-├── mode             → Display & edit selector
-└── button_control   → Button debounce & validation
+    watch (Top Module)
+    │
+    ├── sec              → Seconds counter
+    ├── minute           → Minutes counter
+    ├── hr               → Hours counter
+    ├── mode             → Display & edit selector
+    └── button_control   → Button debounce & validation
+
 
 📂 Module Description
-1️⃣ sec – Seconds Counter
 
-Counts seconds using clock division
+    1️⃣ sec – Seconds Counter
 
-Supports manual increment in edit mode
+        Counts seconds using clock division
 
-Range: 0 – 59
+        Supports manual increment in edit mode
 
-2️⃣ minute – Minutes Counter
+        Range: 0 – 59
 
-Increments when seconds roll over
 
-Supports manual increment
+    2️⃣ minute – Minutes Counter
 
-Range: 0 – 59
+        Increments when seconds roll over
 
-3️⃣ hr – Hours Counter
+        Supports manual increment
 
-Increments when minutes roll over
+        Range: 0 – 59
 
-Supports manual increment
 
-Range: 0 – 23
+    3️⃣ hr – Hours Counter
 
-4️⃣ mode – Mode Controller
+        Increments when minutes roll over
 
-Handles two main functions:
+        Supports manual increment
 
-Display Mode (mode = 0)
+        Range: 0 – 23
 
-Selects which time field is displayed.
 
-Edit Mode (mode = 1)
+    4️⃣ mode – Mode Controller
 
-Enables manual increment for selected field.
+        Handles two main functions:
 
-Input (in)	Selected Field
-00	Seconds
-01	Minutes
-10	Hours
-5️⃣ button_control
+            Display Mode (mode = 0)
 
-Debounces mechanical push button
+                Selects which time field is displayed.
 
-Generates valid input pulse
+            Edit Mode (mode = 1)
 
-Detects long button press
+                Enables manual increment for selected field.
 
-6️⃣ watch – Top Module
 
-Connects all submodules and controls system data flow.
+        Input (in)        Selected Field
+        00                Seconds
+        01                Minutes
+        10                Hours
+
+
+    5️⃣ button_control
+
+        Debounces mechanical push button
+
+        Generates valid input pulse
+
+        Detects long button press
+
+
+    6️⃣ watch – Top Module
+
+        Connects all submodules and controls system data flow.
+
 
 ⚙️ Inputs and Outputs
-Inputs
-Signal	Description
-clk	100 MHz system clock
-rst	System reset
-mode	Edit / Display mode selector
-button	User input button
-in[1:0]	Field selection
-Output
-Signal	Description
-out[5:0]	Selected time value
+
+    Inputs
+
+        Signal      Description
+        clk         100 MHz system clock
+        rst         System reset
+        mode        Edit / Display mode selector
+        button      User input button
+        in[1:0]     Field selection
+
+
+    Output
+
+        Signal      Description
+        out[5:0]    Selected time value
+
+
 🧠 System Behaviour
-Display Mode
 
-Displays selected time unit
+    Display Mode
 
-Clock runs normally
+        Displays selected time unit
 
-Edit Mode
+        Clock runs normally
 
-Allows user to increment selected time unit
 
-Display still shows selected value
+    Edit Mode
+
+        Allows user to increment selected time unit
+
+        Display still shows selected value
+
 
 ⏳ Timing Details
 
-Clock frequency assumed: 100 MHz
+    Clock frequency assumed: 100 MHz
 
-Button press must be held for ~1 second to register valid input
+    Button press must be held for ~1 second to register valid input
+
 
 🛠 Tools & Technologies
 
-Verilog HDL
+    Verilog HDL
 
-FPGA-based implementation
+    FPGA-based implementation
 
-RTL Design Methodology
+    RTL Design Methodology
+
 
 🚀 How To Use
 
-Load design onto FPGA board
+    Load design onto FPGA board
 
-Use mode switch to toggle between:
+    Use mode switch to toggle between:
 
-Display Mode
+        Display Mode
 
-Edit Mode
+        Edit Mode
 
-Use selection input in[1:0] to choose:
 
-Seconds
+    Use selection input in[1:0] to choose:
 
-Minutes
+        Seconds
 
-Hours
+        Minutes
 
-Press button to increment selected field
+        Hours
+
+
+    Press button to increment selected field
+
 
 📈 Future Improvements
 
-7-segment display driver
+    7-segment display driver
 
-Blinking edit indicator
+    Blinking edit indicator
 
-AM/PM support
+    AM/PM support
 
-Multi-button user interface
+    Multi-button user interface
 
-Alarm functionality
+    Alarm functionality
 
-Clock parameterization
+    Clock parameterization
+
 
 📚 Learning Objectives
 
-This project demonstrates:
+    This project demonstrates:
 
-Sequential and combinational logic design
+        Sequential and combinational logic design
 
-Clock domain synchronization
+        Clock domain synchronization
 
-Button debouncing techniques
+        Button debouncing techniques
 
-Modular RTL architecture
+        Modular RTL architecture
 
-Counter rollover handling
+        Counter rollover handling
 
-Hardware UI design concepts
+        Hardware UI design concepts
+
 
 👨‍💻 Author
 
-Developed as part of learning and experimenting with FPGA-based digital design using Verilog.
+    Developed as part of learning and experimenting with FPGA-based digital design using Verilog.
